@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    volumes:
+      - .:/app
+    env_file:
+      - .env.dev  # Usa las variables de entorno de QA
+    ports:
+      - "8001:8000"  # Puerto diferente para evitar conflictos
+    command: python manage.py runserver 0.0.0.0:8000
